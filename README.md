@@ -1,4 +1,4 @@
-# Shared coding-agent preferences
+# agent-config
 
 Tool-independent instructions for coding agents across projects.
 
