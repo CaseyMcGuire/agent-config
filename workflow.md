@@ -15,6 +15,13 @@
 - Include appropriate tests and required code generation with the chunk they support. Identify generated files separately for review.
 - Complete routine decisions within the current chunk autonomously. The review pause belongs between chunks.
 
+After each chunk, report:
+
+1. What changed, by file. Identify generated files separately.
+2. Decisions made and why, including any assumption the request did not cover.
+3. Validation run, with the command and result.
+4. Open questions and anything not verified.
+
 ## Default implementation order
 
 Skip irrelevant steps. Explain dependency-driven changes to this order before implementing them.
