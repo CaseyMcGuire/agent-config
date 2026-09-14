@@ -4,7 +4,13 @@ Tool-independent instructions for coding agents across projects.
 
 ## Use
 
-Point each project's agent instructions to [AGENTS.md](./AGENTS.md), using an absolute path to a local checkout or its raw URL for remote access:
+To have an agent configure a project, open that project and ask:
+
+> Set up this project to use https://github.com/CaseyMcGuire/agent-config.
+
+When asked to set up another project to use this configuration, read [setup.md](./setup.md) and follow its instructions in the target project. The agent creates or updates the project's instruction files, preserving existing guidance and avoiding duplicate pointers or imports.
+
+For manual setup, point each project's agent instructions to [AGENTS.md](./AGENTS.md), using an absolute path to a local checkout or its raw URL for remote access:
 
 ```
 https://raw.githubusercontent.com/CaseyMcGuire/agent-config/master/AGENTS.md
@@ -21,6 +27,7 @@ Copy-paste entry files for specific tools are in [adapters/](./adapters/README.m
 | File | Purpose |
 | --- | --- |
 | [AGENTS.md](./AGENTS.md) | Entry point, required reading, and precedence. |
+| [setup.md](./setup.md) | Agent instructions for configuring a target project. |
 | [workflow.md](./workflow.md) | Collaboration, reviewable chunks, implementation order, and Git workflow. |
 | [conventions/general.md](./conventions/general.md) | General coding conventions and validation. |
 | [conventions/language/java.md](./conventions/language/java.md) | Java conventions. |
