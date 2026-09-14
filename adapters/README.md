@@ -35,8 +35,9 @@ Replace the hosted URL or `~/src/agent-config` with the location of your checkou
   configuration. The Claude shim also loads that entry point.
 
 - If general project instructions exist only in `CLAUDE.md`, follow
-  [setup.md](../setup.md) to review moving them into `AGENTS.md` for
-  other tools to use. Keep Claude-specific instructions in `CLAUDE.md`.
+  [setup.md](../setup.md) to move them into `AGENTS.md` as part of
+  setup for other tools, without a separate confirmation. Keep
+  Claude-specific instructions in `CLAUDE.md`.
 
 - Verify with `/context`: check that the expected user-level,
   project-level, and directly imported files appear under

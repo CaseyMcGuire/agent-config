@@ -1,6 +1,8 @@
 # Set up a project
 
-Use this procedure when the user asks to configure a project to use this repository. A request to read or follow shared preferences applies them to the current task; it does not trigger setup.
+Use this procedure when the user asks to use this configuration for a project. Requests such as "use this repo," "use this configuration," and "set up this project" all mean persistent project setup by default. Complete the setup without asking the user to confirm that interpretation.
+
+If the user explicitly requests use "for this task only" or "for this session only," read and follow the shared preferences without changing the project's instruction files. Reading this repository for review or loading an existing configuration pointer during ordinary work does not trigger setup.
 
 Follow [workflow.md](./workflow.md), [general conventions](./conventions/general.md), and the target project's applicable instructions. Resolve links in this guide relative to this file's location, including when reading remotely.
 
@@ -9,8 +11,8 @@ Follow [workflow.md](./workflow.md), [general conventions](./conventions/general
 1. Identify the target project from the user's request or the current working project. If the target is unclear, ask for its location. Reading or checking out `agent-config` does not make it the target project. Inspect the target's existing instruction files before editing.
 
 2. Create or update the target project's root `AGENTS.md` using the pointer in [project-AGENTS.md](./adapters/project-AGENTS.md).
-   - If setup includes tools that read `AGENTS.md` and general project instructions exist only in `CLAUDE.md`, identify those instructions and ask whether to move them into `AGENTS.md`, unless the user has already authorized that migration. This does not apply to setup explicitly limited to Claude Code.
-   - If the user agrees, move the general project instructions without changing their meaning and keep Claude-specific instructions in `CLAUDE.md`. Its import in step 3 will load the moved instructions. If the user declines, preserve the existing content and report that those instructions remain outside `AGENTS.md`.
+   - If setup includes tools that read `AGENTS.md` and general project instructions exist only in `CLAUDE.md`, move those instructions into `AGENTS.md` as part of setup, without a separate confirmation. Skip this migration when setup is explicitly limited to Claude Code or the user asks to keep those instructions in place.
+   - Move project-wide guidance such as build and test commands, architecture, and coding conventions without changing its meaning. Keep instructions about Claude-specific tools and commands in `CLAUDE.md`. Preserve the instructions' scope and link targets; the import in step 3 will let Claude read the moved rules.
    - Add the pointer above existing project-specific content, preserving that content.
    - Include the project pointer even when user-level shared configuration exists, so other tools and contributors can use the project's configuration independently.
    - Use the adapter's hosted URL by default. Use an absolute local path or a specific revision when requested.

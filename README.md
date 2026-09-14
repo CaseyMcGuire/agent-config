@@ -6,9 +6,11 @@ Tool-independent instructions for coding agents across projects.
 
 To have an agent configure a project, open that project and ask:
 
-> Set up this project to use https://github.com/CaseyMcGuire/agent-config.
+> Use https://github.com/CaseyMcGuire/agent-config for this project.
 
-When asked to set up another project to use this configuration, read [setup.md](./setup.md) and follow its instructions in the target project. The agent creates or updates the project's instruction files, preserving existing guidance and avoiding duplicate pointers or imports.
+A request to use this configuration, including "use this repo," means persistent project setup by default. Read [setup.md](./setup.md) and follow its instructions in the target project. The agent creates or updates the project's instruction files, preserving existing guidance and avoiding duplicate pointers or imports. Moving general project rules from `CLAUDE.md` into `AGENTS.md` is part of setup and does not require a separate confirmation; Claude-specific instructions stay in `CLAUDE.md`.
+
+For temporary use, say "Use this configuration for this task only" or "for this session only." The agent then follows the shared preferences without changing the project's instruction files. Loading an existing configuration pointer during ordinary work does not trigger setup.
 
 For manual setup, point each project's agent instructions to [AGENTS.md](./AGENTS.md), using an absolute path to a local checkout or its raw URL for remote access:
 
