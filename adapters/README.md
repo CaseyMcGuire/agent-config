@@ -6,15 +6,33 @@ File names deliberately do not match the names tools load automatically (`AGENTS
 
 | Stub | Copy to | Read by |
 | --- | --- | --- |
-| [project-AGENTS.md](./project-AGENTS.md) | `<project>/AGENTS.md`, above project-specific content | Tools that read `AGENTS.md` natively: Codex, Cursor, GitHub Copilot, Gemini CLI, Windsurf, Aider, Zed, and others. |
+| [project-AGENTS.md](./project-AGENTS.md) | `<project>/AGENTS.md`, above project-specific content | Tools that load `AGENTS.md`, including Codex. Other tools may require configuration to recognize this filename. |
 | [project-CLAUDE.md](./project-CLAUDE.md) | `<project>/CLAUDE.md` | Claude Code, which reads `CLAUDE.md` rather than `AGENTS.md`. |
 | [user-CLAUDE.md](./user-CLAUDE.md) | `~/.claude/CLAUDE.md` | Claude Code, in every project on the machine. |
 
 Replace the hosted URL or `~/src/agent-config` with the location of your checkout.
 
-## Choosing a route for Claude Code
+## Setting up Claude Code
 
-- Use `user-CLAUDE.md` on your own machine. Imports in user-scope files load without the external-import approval dialog, and the always-read files are in context at launch.
-- Use `project-CLAUDE.md` in repositories where other people's tools also need the shared preferences. Add Claude-specific instructions below the import.
-- Do not use both in one project; the shared files would load twice.
-- Verify with `/context`. The imported files should appear under Memory files.
+- Copy `user-CLAUDE.md` to `~/.claude/CLAUDE.md` to load shared
+  preferences from a local checkout across your projects.
+  Replace `~/src/agent-config` with your checkout's path.
+
+- In projects whose instructions live in `AGENTS.md`, copy
+  `project-CLAUDE.md` to the project's `CLAUDE.md`. This imports
+  the project's instructions. Ensure that `AGENTS.md` exists.
+
+- These adapters can be used together: the user-level file loads
+  shared preferences, while the project-level file loads project
+  instructions. A project pointer to the same shared preferences
+  may cause additional reads; that is not a reason to omit the
+  project's instructions.
+
+- Without the user-level adapter, add `project-AGENTS.md` above
+  the project-specific content in the project's `AGENTS.md`.
+  The Claude shim then loads that entry point.
+
+- Verify with `/context`: check that the expected user-level,
+  project-level, and directly imported files appear under
+  Memory files. Files reached through ordinary Markdown links
+  require the agent to read them separately.
