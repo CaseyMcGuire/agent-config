@@ -6,7 +6,7 @@ File names deliberately do not match the names tools load automatically (`AGENTS
 
 | Stub | Copy to | Read by |
 | --- | --- | --- |
-| [project-AGENTS.md](./project-AGENTS.md) | `<project>/AGENTS.md`, above project-specific content | Tools that load `AGENTS.md`, including Codex. Other tools may require configuration to recognize this filename. |
+| [project-AGENTS.md](./project-AGENTS.md) | `<project>/AGENTS.md`, above project-specific content | Tools supporting `AGENTS.md`; see [agents.md](https://agents.md/) for the ecosystem list and tool-specific setup requirements. |
 | [project-CLAUDE.md](./project-CLAUDE.md) | `<project>/CLAUDE.md` | Claude Code, which reads `CLAUDE.md` rather than `AGENTS.md`. |
 | [user-CLAUDE.md](./user-CLAUDE.md) | `~/.claude/CLAUDE.md` | Claude Code, in every project on the machine. |
 
@@ -28,9 +28,15 @@ Replace the hosted URL or `~/src/agent-config` with the location of your checkou
   may cause additional reads; that is not a reason to omit the
   project's instructions.
 
-- Without the user-level adapter, add `project-AGENTS.md` above
-  the project-specific content in the project's `AGENTS.md`.
-  The Claude shim then loads that entry point.
+- Add `project-AGENTS.md` above project-specific content in the
+  project's `AGENTS.md`, even when a user-level adapter exists.
+  This keeps the project's shared preferences available to other
+  tools and contributors independently of your user-level
+  configuration. The Claude shim also loads that entry point.
+
+- If general project instructions exist only in `CLAUDE.md`, follow
+  [setup.md](../setup.md) to review moving them into `AGENTS.md` for
+  other tools to use. Keep Claude-specific instructions in `CLAUDE.md`.
 
 - Verify with `/context`: check that the expected user-level,
   project-level, and directly imported files appear under
