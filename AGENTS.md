@@ -3,6 +3,7 @@
 Apply these shared preferences as defaults. Explicit project instructions may override them.
 
 - Always read [workflow.md](./workflow.md) and [conventions/general.md](./conventions/general.md).
+- When the user asks to use this configuration for a project, including "use this repo," follow [setup.md](./setup.md) for persistent setup unless the user explicitly requests task-only or session-only use. Loading an existing configuration pointer does not trigger setup.
 - For Java work, also read [conventions/language/java.md](./conventions/language/java.md).
 - For GraphQL work, also read [conventions/language/graphql.md](./conventions/language/graphql.md).
 - For Kotlin work, also read [conventions/language/kotlin.md](./conventions/language/kotlin.md).
