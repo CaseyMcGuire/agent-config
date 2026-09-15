@@ -8,6 +8,10 @@
 - Split large functions and components around clear responsibilities.
 - Do not refactor unrelated code.
 - Run focused validation appropriate to the change.
+- Follow the patterns already in the codebase before introducing new
+  ones. When deviating, say why.
+- Do not add dependencies without asking.
+- Comment on why, not what. Document the public API of library code.
 - Organize work into substantial, coherent review units, each centered on a feature, behavior, or
   important design decision. Include the supporting implementation and tests together. Propose the
   boundaries before coding, and pause for review after each agreed chunk. Avoid splitting work merely
@@ -27,3 +31,11 @@
 - When asking a question, state the default you would choose and why.
 - If the requested approach has a concrete problem, say so before
   implementing.
+
+## Failures and findings
+
+- If validation fails, fix the cause. Do not weaken tests, delete
+  assertions, suppress warnings, or loosen types to get a pass.
+- Report bugs or debt found outside the task. Do not fix them.
+- If the task turns out larger than expected, stop and say so before
+  continuing.
