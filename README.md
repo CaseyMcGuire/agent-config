@@ -4,9 +4,21 @@ Tool-independent instructions for coding agents across projects.
 
 ## Use
 
-To have an agent configure a project, open that project and ask:
+Open the target project in Claude Code or Codex and give it this prompt:
 
-> Use https://github.com/CaseyMcGuire/agent-config for this project.
+```text
+Set up this project to use:
+https://raw.githubusercontent.com/CaseyMcGuire/agent-config/master/AGENTS.md
+
+Follow its linked setup instructions for persistent use. Add a shared-config
+pointer to the project's AGENTS.md and ensure CLAUDE.md imports @AGENTS.md.
+Preserve existing instructions and reuse equivalent pointers or imports.
+Read skills remotely without installing them locally.
+Verify that the saved project instruction files lead to the shared skill catalog.
+```
+
+Saving the pointer in the target project's instructions lets future sessions
+find the remote catalog. The skill files themselves stay remote.
 
 A request to use this configuration, including "use this repo," means persistent project setup by default. Read [setup.md](./setup.md) and follow its instructions in the target project. The agent creates or updates the project's instruction files, preserving existing guidance and avoiding duplicate pointers or imports. Moving general project rules from `CLAUDE.md` into `AGENTS.md` is part of setup and does not require a separate confirmation; Claude-specific instructions stay in `CLAUDE.md`.
 

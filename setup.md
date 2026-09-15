@@ -2,6 +2,8 @@
 
 Use this procedure when the user asks to use this configuration for a project. Requests such as "use this repo," "use this configuration," and "set up this project" all mean persistent project setup by default. Complete the setup without asking the user to confirm that interpretation.
 
+During persistent setup, add any missing shared-config pointer or selected-tool import as part of the requested work. Complete setup by verifying that the saved project instruction files lead to the shared entry point and skill catalog.
+
 If the user explicitly requests use "for this task only" or "for this session only," read and follow the shared preferences without changing the project's instruction files or installing skills. Reading this repository for review or loading an existing configuration pointer during ordinary work does not trigger setup.
 
 Follow [workflow.md](./workflow.md), [general conventions](./conventions/general.md), and the target project's applicable instructions. Resolve links in this guide relative to this file's location, including when reading remotely.
@@ -31,7 +33,7 @@ Follow [workflow.md](./workflow.md), [general conventions](./conventions/general
    - Inspect the diff and confirm that existing instructions were preserved and pointers and imports were not duplicated.
    - If instructions were moved from `CLAUDE.md`, confirm that the general project rules are now in `AGENTS.md` and Claude-specific rules remain in `CLAUDE.md`.
    - Confirm that the Claude import resolves to the target project's `AGENTS.md`.
-   - Follow the configured pointer to the shared entry point and its skill catalog. Read applicable instructions, skills, and supporting references from the configured location, resolving each relative link against the containing document's URL when reading remotely. Report retrieval failures with the file or URL and error.
+   - Start from the pointer saved in the target project's `AGENTS.md` and follow it to the shared entry point and skill catalog. Read applicable instructions, skills, and supporting references from the configured location, resolving each relative link against the containing document's URL when reading remotely. Report retrieval failures with the file or URL and error.
    - If native installation was requested, confirm each installed skill is readable and discoverable by the selected tools. Check native discovery in fresh sessions when available.
    - Summarize the changed files and checks. Distinguish instruction retrieval through the shared pointer, optional native skill discovery, and any actual workflow execution tested in a fresh agent session.
 
