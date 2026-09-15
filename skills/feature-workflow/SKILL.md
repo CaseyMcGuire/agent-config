@@ -29,8 +29,9 @@ workflow's planning and review pauses.
   already given in the conversation; revisit it when the plan materially changes.
 - A task can be one chunk when its scope is coherent and reviewable.
 
-Use this implementation order where applicable. Skip irrelevant steps and
-explain dependency-driven changes to the order before implementing them:
+Choose chunks and implementation order based on the feature's scope and
+dependencies. For example, a feature spanning an API, backend, and frontend
+might follow this sequence:
 
 1. **API contract:** GraphQL schema or equivalent inputs, outputs, and failures.
 2. **Backend service:** Business logic, validation, permissions, and transactions.
@@ -49,9 +50,11 @@ explain dependency-driven changes to the order before implementing them:
 
 After each chunk, report:
 
-1. The full agreed implementation checklist again, with completed steps marked
-   `- [x]` and remaining steps left unchecked (`- [ ]`). Use plain text for
-   routine confirmations and validation summaries; do not invent extra checklists.
+1. The full agreed implementation checklist again. Mark a step `- [x]` only
+   when its code is implemented and committed. Leave all other steps unchecked
+   (`- [ ]`), including code that is implemented but not yet committed. Use
+   plain text for routine confirmations and validation summaries; do not invent
+   extra checklists.
 2. A brief summary of what will be implemented in the next chunk. If all chunks
    are complete, say so.
 3. What changed, by file. Identify generated files separately.
