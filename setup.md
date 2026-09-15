@@ -25,14 +25,14 @@ Follow [workflow.md](./workflow.md), [general conventions](./conventions/general
    - Configure both project entry files by default. Follow an explicit request to configure only a particular tool.
    - This procedure configures the target project. Change user-level files only when the user requests that setup.
 
-4. Install the skills in [skills/](./skills/) for the selected tools, following the [skill installation guide](./adapters/README.md#shared-skill-installation).
+4. Use the [shared skill catalog](./AGENTS.md#skill-catalog) through the configuration pointer. Install skills locally only if the user requests native skill-picker integration, following the [skill installation guide](./adapters/README.md#shared-skill-installation).
 
 5. Verify the setup.
    - Inspect the diff and confirm that existing instructions were preserved and pointers and imports were not duplicated.
    - If instructions were moved from `CLAUDE.md`, confirm that the general project rules are now in `AGENTS.md` and Claude-specific rules remain in `CLAUDE.md`.
    - Confirm that the Claude import resolves to the target project's `AGENTS.md`.
-   - Confirm each installed skill is readable and discoverable by the selected tools. Check native discovery in fresh sessions when available.
-   - Read the shared entry point and its applicable links using the configured location. Report any file or URL that cannot be retrieved.
-   - Summarize the changed files and checks. Distinguish file validation, native skill discovery, and any actual workflow execution tested in a fresh agent session.
+   - Follow the configured pointer to the shared entry point and its skill catalog. Read applicable instructions, skills, and supporting references from the configured location, resolving each relative link against the containing document's URL when reading remotely. Report retrieval failures with the file or URL and error.
+   - If native installation was requested, confirm each installed skill is readable and discoverable by the selected tools. Check native discovery in fresh sessions when available.
+   - Summarize the changed files and checks. Distinguish instruction retrieval through the shared pointer, optional native skill discovery, and any actual workflow execution tested in a fresh agent session.
 
 Running setup again should leave correctly configured files unchanged. Follow the shared workflow's commit and push rules.

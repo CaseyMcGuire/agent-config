@@ -11,6 +11,19 @@ Apply these shared preferences as defaults. Explicit project instructions may ov
 - Do not preload every linked file or the entire conventions directory. Read additional guides as they become relevant during the task.
 - Reuse instructions already available in context. Read them again only if they changed or their contents are no longer available.
 
+## Skill catalog
+
+Treat these skills as available through this shared configuration even when
+they are absent from the agent's native installed-skills list.
+
+| Skill | When to use | Canonical instructions |
+| --- | --- | --- |
+| `feature-workflow` | Feature development, or when the user requests the collaboration workflow. | [SKILL.md](./skills/feature-workflow/SKILL.md) |
+
+- Read and follow a skill's canonical `SKILL.md` when the task matches its purpose or the user requests it by name.
+- Load only relevant skills and supporting references.
+- Read remote skill files directly from their URLs. Following them does not require a local copy, clone, symlink, or installation. Native installation is optional for skill-picker integration.
+
 ## Task-specific instructions
 
 - When the user asks to use this configuration for a project, including "use this repo," follow [setup.md](./setup.md) for persistent setup unless the user explicitly requests task-only or session-only use. Loading an existing configuration pointer does not trigger setup.
@@ -21,6 +34,6 @@ Apply these shared preferences as defaults. Explicit project instructions may ov
 - For React work, also read [conventions/libraries/react/README.md](./conventions/libraries/react/README.md).
 - For StyleX work, also read [conventions/libraries/react/stylex.md](./conventions/libraries/react/stylex.md).
 - For Relay work, also read [conventions/libraries/react/relay.md](./conventions/libraries/react/relay.md).
-- Report any referenced instructions that cannot be retrieved, identifying the unavailable file or URL.
+- Report any referenced instructions or supporting resources that cannot be retrieved, identifying the unavailable file or URL and the retrieval error. Do not silently skip required instructions.
 
-Resolve these links relative to this file's location, including when reading this repository remotely.
+Resolve each relative link against the containing document's directory when reading locally, or its URL when reading remotely. Apply this at every link you follow, including links from `SKILL.md` to supporting references and links within those references.

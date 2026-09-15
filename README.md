@@ -8,7 +8,7 @@ To have an agent configure a project, open that project and ask:
 
 > Use https://github.com/CaseyMcGuire/agent-config for this project.
 
-A request to use this configuration, including "use this repo," means persistent project setup by default. Read [setup.md](./setup.md) and follow its instructions in the target project. The agent creates or updates the project's instruction files and installs the shared skill for Codex and Claude Code, preserving existing guidance and avoiding duplicate pointers or imports. Moving general project rules from `CLAUDE.md` into `AGENTS.md` is part of setup and does not require a separate confirmation; Claude-specific instructions stay in `CLAUDE.md`.
+A request to use this configuration, including "use this repo," means persistent project setup by default. Read [setup.md](./setup.md) and follow its instructions in the target project. The agent creates or updates the project's instruction files, preserving existing guidance and avoiding duplicate pointers or imports. Moving general project rules from `CLAUDE.md` into `AGENTS.md` is part of setup and does not require a separate confirmation; Claude-specific instructions stay in `CLAUDE.md`.
 
 For temporary use, say "Use this configuration for this task only" or "for this session only." The agent then follows the shared preferences without changing the project's instruction files or installing skills. Loading an existing configuration pointer during ordinary work does not trigger setup.
 
@@ -20,7 +20,15 @@ https://raw.githubusercontent.com/CaseyMcGuire/agent-config/master/AGENTS.md
 
 Use the raw URL rather than the `github.com/.../blob/...` page, which returns the file wrapped in site navigation. Tell the agent to read the entry point and follow its applicable links.
 
-Links within this repository are relative to the document containing them. When reading remotely, resolve them against that document's URL.
+The same pointer exposes the [skill catalog](./AGENTS.md#skill-catalog). Agents
+read and follow relevant skills remotely, or when requested by name, without
+copying, cloning, symlinking, or installing skill files locally. The full
+instructions stay in each skill's canonical `SKILL.md`.
+
+Links within this repository are relative to the document containing them. When reading remotely, resolve them against that document's URL at every step, including supporting references linked from a skill. Report retrieval failures instead of silently skipping instructions.
+
+[Native skill installation](./adapters/README.md#shared-skill-installation) is
+optional for users who want skill-picker and command integration.
 
 Copy-paste entry files for specific tools are in [adapters/](./adapters/README.md).
 
@@ -28,7 +36,7 @@ Copy-paste entry files for specific tools are in [adapters/](./adapters/README.m
 
 | File | Purpose |
 | --- | --- |
-| [AGENTS.md](./AGENTS.md) | Entry point, required reading, and precedence. |
+| [AGENTS.md](./AGENTS.md) | Entry point, skill catalog, required reading, and precedence. |
 | [setup.md](./setup.md) | Agent instructions for configuring a target project. |
 | [workflow.md](./workflow.md) | Task scope, skill selection, and Git workflow. |
 | [skills/feature-workflow/SKILL.md](./skills/feature-workflow/SKILL.md) | Shared feature planning, implementation, and review procedure. |
@@ -49,5 +57,7 @@ Copy-paste entry files for specific tools are in [adapters/](./adapters/README.m
 - Record only established preferences. Mark files without conventions as placeholders.
 - Keep project-specific build commands, architecture, dependencies, and database rules in the relevant project's instructions.
 - Keep adapter stubs free of preferences. They only point a tool at the entry point.
-- Keep the feature workflow in `skills/feature-workflow/SKILL.md`. The native
-  skill directories link to this shared source.
+- Keep each skill's instructions in `skills/<skill-name>/SKILL.md`, with its
+  name, purpose, and canonical link in the `AGENTS.md` catalog. Link supporting
+  references instead of duplicating instructions. Native skill directories in
+  this repository link to the same canonical source.

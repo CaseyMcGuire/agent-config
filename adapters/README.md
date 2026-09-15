@@ -14,6 +14,10 @@ Replace the hosted URL or `~/src/agent-config` with the location of your checkou
 
 ## Shared skill installation
 
+Native installation is optional for skill-picker and command integration.
+Agents can discover and follow skills remotely through the shared-config
+pointer and [skill catalog](../AGENTS.md#skill-catalog), without local skill files.
+
 The portable [feature-workflow skill](../skills/feature-workflow/SKILL.md) uses
 standard `name` and `description` frontmatter. Its instructions are shared by
 both tools; it does not require a plugin or tool-specific execution settings.
@@ -28,9 +32,10 @@ In this repository, both skill directories are relative symlinks to
 [Codex documentation](https://learn.chatgpt.com/docs/build-skills#where-to-save-skills)
 and [Claude Code documentation](https://code.claude.com/docs/en/skills#choose-where-skills-load).
 
-During [project setup](../setup.md), copy each complete directory from
-[skills/](../skills/) to the selected tool's project discovery path, using the
-same configuration source and revision as the entry point. When configuring
+When native installation is requested during [project setup](../setup.md), use
+the [catalog](../AGENTS.md#skill-catalog) to locate canonical skill directories.
+Copy each complete directory to the selected tool's project discovery path,
+using the same configuration source and revision as the entry point. When configuring
 both tools, copy into `.agents/skills/<skill-name>` and link
 `.claude/skills/<skill-name>` to `../../.agents/skills/<skill-name>`.
 Keep the installed files and relative links in the project's version control.
@@ -39,9 +44,10 @@ Preserve this repository's existing links to its canonical skill directories.
 Reuse correct links or identical copies, refresh older installed copies, and
 report conflicting unrelated skills without overwriting them.
 
-Install the files locally even when `AGENTS.md` points at hosted instructions;
-reading that pointer does not register a native skill. Fetch canonical files
-from `skills/`, since raw Git symlink entries contain only link targets.
+The shared pointer makes skill instructions available for agents to read;
+native installation also registers them in the tool's skill picker. When
+installing from a hosted source, fetch canonical files from `skills/`, since
+raw Git symlink entries contain only link targets.
 
 For user-level installation when requested, copy or link the canonical skill
 directory to `~/.agents/skills/<skill-name>` for Codex and

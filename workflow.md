@@ -7,8 +7,9 @@
 
 ## Skills
 
-- Review the available skills and follow the instructions for those relevant
-  to the task or explicitly requested by the user.
+- Review both native installed skills and the [shared skill catalog](./AGENTS.md#skill-catalog).
+  Follow the catalog's loading rules to read skills relevant to the task or
+  requested by name, including those available only through a URL.
 
 ## Git workflow
 
