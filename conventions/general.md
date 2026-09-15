@@ -12,10 +12,7 @@
   ones. When deviating, say why.
 - Do not add dependencies without asking.
 - Comment on why, not what. Document the public API of library code.
-- Organize work into substantial, coherent review units, each centered on a feature, behavior, or
-  important design decision. Include the supporting implementation and tests together. Propose the
-  boundaries before coding, and pause for review after each agreed chunk. Avoid splitting work merely
-  to meet a line-count target.
+- Keep supporting implementation and tests together.
 
 ## Communication
 

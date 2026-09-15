@@ -2,7 +2,7 @@
 
 Use this procedure when the user asks to use this configuration for a project. Requests such as "use this repo," "use this configuration," and "set up this project" all mean persistent project setup by default. Complete the setup without asking the user to confirm that interpretation.
 
-If the user explicitly requests use "for this task only" or "for this session only," read and follow the shared preferences without changing the project's instruction files. Reading this repository for review or loading an existing configuration pointer during ordinary work does not trigger setup.
+If the user explicitly requests use "for this task only" or "for this session only," read and follow the shared preferences without changing the project's instruction files or installing skills. Reading this repository for review or loading an existing configuration pointer during ordinary work does not trigger setup.
 
 Follow [workflow.md](./workflow.md), [general conventions](./conventions/general.md), and the target project's applicable instructions. Resolve links in this guide relative to this file's location, including when reading remotely.
 
@@ -25,11 +25,14 @@ Follow [workflow.md](./workflow.md), [general conventions](./conventions/general
    - Configure both project entry files by default. Follow an explicit request to configure only a particular tool.
    - This procedure configures the target project. Change user-level files only when the user requests that setup.
 
-4. Verify the setup.
+4. Install the skills in [skills/](./skills/) for the selected tools, following the [skill installation guide](./adapters/README.md#shared-skill-installation).
+
+5. Verify the setup.
    - Inspect the diff and confirm that existing instructions were preserved and pointers and imports were not duplicated.
    - If instructions were moved from `CLAUDE.md`, confirm that the general project rules are now in `AGENTS.md` and Claude-specific rules remain in `CLAUDE.md`.
    - Confirm that the Claude import resolves to the target project's `AGENTS.md`.
+   - Confirm each installed skill is readable and discoverable by the selected tools. Check native discovery in fresh sessions when available.
    - Read the shared entry point and its applicable links using the configured location. Report any file or URL that cannot be retrieved.
-   - Summarize the changed files and checks. Distinguish files you read from files confirmed to load automatically in a fresh agent session.
+   - Summarize the changed files and checks. Distinguish file validation, native skill discovery, and any actual workflow execution tested in a fresh agent session.
 
 Running setup again should leave correctly configured files unchanged. Follow the shared workflow's commit and push rules.
