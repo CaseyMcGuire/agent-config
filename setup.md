@@ -4,7 +4,7 @@ Use this procedure when the user asks to use this configuration for a project. R
 
 During persistent setup, add any missing shared-config pointer or selected-tool import as part of the requested work. Complete setup by verifying that the saved project instruction files lead to the shared entry point and skill catalog.
 
-If the user explicitly requests use "for this task only" or "for this session only," read and follow the shared preferences without changing the project's instruction files or installing skills. Reading this repository for review or loading an existing configuration pointer during ordinary work does not trigger setup.
+If the user explicitly requests use "for this task only" or "for this session only," read and follow the shared preferences without changing the project's instruction files or installing the plugin. Reading this repository for review or loading an existing configuration pointer during ordinary work does not trigger setup.
 
 Follow [workflow.md](./workflow.md), [general conventions](./conventions/general.md), and the target project's applicable instructions. Resolve links in this guide relative to this file's location, including when reading remotely.
 
@@ -27,7 +27,11 @@ Follow [workflow.md](./workflow.md), [general conventions](./conventions/general
    - Configure both project entry files by default. Follow an explicit request to configure only a particular tool.
    - This procedure configures the target project. Change user-level files only when the user requests that setup.
 
-4. Use the [shared skill catalog](./AGENTS.md#skill-catalog) through the configuration pointer. Install skills locally only if the user requests native skill-picker integration, following the [skill installation guide](./adapters/README.md#shared-skill-installation).
+4. Use the [shared skill catalog](./AGENTS.md#skill-catalog) through the configuration pointer. If the user requests native skills on startup or skill-picker integration, follow the [plugin setup guide](./adapters/README.md#plugin-setup).
+   - Install the `agent-config` plugin through each selected tool's native plugin manager, using the configuration's repository and revision. Both plugin manifests package the same canonical `skills/` directory.
+   - Use user scope when the user requests skills across projects; otherwise keep the requested project scope where supported. A native-skill request does not authorize changing unrelated instructions, settings, or plugins.
+   - Reuse an existing matching installation. Follow the installation guide to verify installed files and check native commands. Preserve unrelated skills.
+   - Explain the tool's update and reload behavior. Native installation does not guarantee a GitHub refresh before every launch. Keep remote instruction-only setup available without installing the plugin.
 
 5. Verify the setup.
    - Inspect the diff and confirm that existing instructions were preserved and pointers and imports were not duplicated.

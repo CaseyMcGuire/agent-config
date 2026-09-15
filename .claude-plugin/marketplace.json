@@ -1,0 +1,13 @@
+{
+  "name": "agent-config",
+  "description": "Shared coding workflows for Claude Code and Codex.",
+  "owner": {
+    "name": "CaseyMcGuire"
+  },
+  "plugins": [
+    {
+      "name": "agent-config",
+      "source": "./"
+    }
+  ]
+}

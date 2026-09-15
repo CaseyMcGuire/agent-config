@@ -12,51 +12,72 @@ File names deliberately do not match the names tools load automatically (`AGENTS
 
 Replace the hosted URL or `~/src/agent-config` with the location of your checkout.
 
-## Shared skill installation
+## Plugin setup
 
-Native installation is optional for skill-picker and command integration.
+Plugin installation is optional for skill-picker and command integration.
 Agents can discover and follow skills remotely through the shared-config
 pointer and [skill catalog](../AGENTS.md#skill-catalog), without local skill files.
 
-The portable [feature-workflow skill](../skills/feature-workflow/SKILL.md) uses
-standard `name` and `description` frontmatter. Its instructions are shared by
-both tools; it does not require a plugin or tool-specific execution settings.
+Install the `agent-config` plugin once in each tool. It provides all included
+skills as native commands; no separate skill installation is needed. Both
+tool-specific manifests use this repository's canonical `skills/` directory,
+including supporting files. The tool manages its installed copy.
 
-| Tool | Project discovery path | Explicit invocation |
-| --- | --- | --- |
-| Codex | `.agents/skills/<skill-name>/SKILL.md` | `$<skill-name>` |
-| Claude Code | `.claude/skills/<skill-name>/SKILL.md` | `/<skill-name>` |
+For Codex:
 
-In this repository, both skill directories are relative symlinks to
-`skills/feature-workflow`. Both tools support symlinked skill directories:
-[Codex documentation](https://learn.chatgpt.com/docs/build-skills#where-to-save-skills)
-and [Claude Code documentation](https://code.claude.com/docs/en/skills#choose-where-skills-load).
+```sh
+codex plugin marketplace add CaseyMcGuire/agent-config --ref master
+codex plugin add agent-config@agent-config
+```
 
-When native installation is requested during [project setup](../setup.md), use
-the [catalog](../AGENTS.md#skill-catalog) to locate canonical skill directories.
-Copy each complete directory to the selected tool's project discovery path,
-using the same configuration source and revision as the entry point. When configuring
-both tools, copy into `.agents/skills/<skill-name>` and link
-`.claude/skills/<skill-name>` to `../../.agents/skills/<skill-name>`.
-Keep the installed files and relative links in the project's version control.
+For Claude Code:
 
-Preserve this repository's existing links to its canonical skill directories.
-Reuse correct links or identical copies, refresh older installed copies, and
-report conflicting unrelated skills without overwriting them.
+```sh
+claude plugin marketplace add CaseyMcGuire/agent-config
+claude plugin install agent-config@agent-config --scope user
+```
 
-The shared pointer makes skill instructions available for agents to read;
-native installation also registers them in the tool's skill picker. When
-installing from a hosted source, fetch canonical files from `skills/`, since
-raw Git symlink entries contain only link targets.
+These commands make skills available across projects. Use the user's selected
+scope when they request something narrower. See the [Codex plugin guide](https://developers.openai.com/plugins/build/plugins)
+and [Claude plugin guide](https://code.claude.com/docs/en/plugins) for native
+installation and discovery behavior.
 
-For user-level installation when requested, copy or link the canonical skill
-directory to `~/.agents/skills/<skill-name>` for Codex and
-`~/.claude/skills/<skill-name>` for Claude Code. This makes it available
-across projects on that machine. Avoid installing a second copy when that
-scope already provides the skill you want to use.
+The marketplace source is the Git repository, not a raw `marketplace.json`
+URL: each catalog's `./` plugin source resolves to its repository root. When a
+specific revision is requested, preserve that revision in the marketplace
+source. For local testing before publishing, replace the GitHub source in the
+marketplace-add command with this checkout's absolute path. A local
+marketplace follows the checkout; it does not fetch GitHub.
 
-Start a fresh session after creating a discovery directory for the first time
-and check `/skills` for the installed skills.
+After installation, start a fresh session and check native discovery:
+`$agent-config:feature-workflow` in Codex and `/agent-config:feature-workflow`
+in Claude Code. Check that the plugin's skill files match the configured source. The
+shared-config pointer still supplies coding conventions; installing the plugin
+does not change when a skill's workflow should be used.
+
+### Updating the plugin
+
+Release skill additions, changes, and removals by updating the canonical
+`skills/` directory and bumping the version in both plugin manifests together.
+Do not edit installed caches. After publishing the release, refresh with:
+
+```sh
+codex plugin marketplace upgrade agent-config
+codex plugin add agent-config@agent-config
+claude plugin marketplace update agent-config
+claude plugin update agent-config@agent-config
+```
+
+Start a fresh session after updating. In Claude Code, `/reload-plugins` can
+also refresh skills in the current session. Enable automatic updates for this
+marketplace through `/plugin` → Marketplaces → agent-config → Enable
+auto-update if wanted. Claude's background update can run after startup, with
+a delay of up to ten minutes; updated skills then need a reload or another
+launch. See [Claude's update behavior](https://code.claude.com/docs/en/discover-plugins#configure-auto-updates).
+
+Native plugin installation makes the installed version available at startup.
+It does not promise that every launch fetches the latest GitHub revision before
+the first prompt. Verify update behavior separately from initial discovery.
 
 ## Setting up Claude Code
 

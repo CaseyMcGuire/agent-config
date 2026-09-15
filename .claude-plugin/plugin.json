@@ -1,0 +1,9 @@
+{
+  "name": "agent-config",
+  "version": "0.1.0+codex.20260915232255",
+  "description": "Shared coding workflows for Claude Code and Codex.",
+  "author": {
+    "name": "CaseyMcGuire"
+  },
+  "repository": "https://github.com/CaseyMcGuire/agent-config"
+}

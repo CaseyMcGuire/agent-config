@@ -20,9 +20,9 @@ they are absent from the agent's native installed-skills list.
 | --- | --- | --- |
 | `feature-workflow` | Feature development, or when the user requests the collaboration workflow. | [SKILL.md](./skills/feature-workflow/SKILL.md) |
 
-- Read and follow a skill's canonical `SKILL.md` when the task matches its purpose or the user requests it by name.
+- When a skill is relevant or requested by name, prefer its installed instructions and respect its invocation policy. Reuse instructions already available in context. If the skill is not installed, read and follow the canonical `SKILL.md` linked above.
 - Load only relevant skills and supporting references.
-- Read remote skill files directly from their URLs. Following them does not require a local copy, clone, symlink, or installation. Native installation is optional for skill-picker integration.
+- Read remote skill files directly from their URLs. Following them does not require a local copy, clone, symlink, or installation. The optional [native plugin](./adapters/README.md#plugin-setup) registers skills in each tool's skill picker.
 
 ## Task-specific instructions
 
