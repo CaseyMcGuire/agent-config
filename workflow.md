@@ -1,36 +1,14 @@
-# Collaboration workflow
+# Shared workflow
 
 ## Scope
 
 - Implement only the requested work, including necessary supporting changes.
 - Earlier discussions provide context, not authorization to build additional features.
 
-## Reviewable chunks
+## Skills
 
-- Before implementing a feature, propose small, reviewable chunks.
-- Implement only the first chunk, validate it, summarize the decisions, and stop for review.
-- Incorporate feedback before proceeding.
-- Wait until asked to continue before starting another chunk.
-- Small tasks can be one chunk.
-- Include appropriate tests and required code generation with the chunk they support. Identify generated files separately for review.
-- Complete routine decisions within the current chunk autonomously. The review pause belongs between chunks.
-
-After each chunk, report:
-
-1. What changed, by file. Identify generated files separately.
-2. Decisions made and why, including any assumption the request did not cover.
-3. Validation run, with the command and result.
-4. Open questions and anything not verified.
-
-## Default implementation order
-
-Skip irrelevant steps. Explain dependency-driven changes to this order before implementing them.
-
-1. **API contract:** GraphQL schema or equivalent inputs, outputs, and failures.
-2. **Backend service:** Business logic, validation, permissions, and transactions.
-3. **Resolver/controller:** Connect the API to the service.
-4. **Frontend UI:** Components, layout, and loading existing data.
-5. **Frontend interactions:** Actions, mutation handling, errors, and navigation.
+- Review the available skills and follow the instructions for those relevant
+  to the task or explicitly requested by the user.
 
 ## Git workflow
 

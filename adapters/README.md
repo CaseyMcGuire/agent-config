@@ -12,6 +12,46 @@ File names deliberately do not match the names tools load automatically (`AGENTS
 
 Replace the hosted URL or `~/src/agent-config` with the location of your checkout.
 
+## Shared skill installation
+
+The portable [feature-workflow skill](../skills/feature-workflow/SKILL.md) uses
+standard `name` and `description` frontmatter. Its instructions are shared by
+both tools; it does not require a plugin or tool-specific execution settings.
+
+| Tool | Project discovery path | Explicit invocation |
+| --- | --- | --- |
+| Codex | `.agents/skills/<skill-name>/SKILL.md` | `$<skill-name>` |
+| Claude Code | `.claude/skills/<skill-name>/SKILL.md` | `/<skill-name>` |
+
+In this repository, both skill directories are relative symlinks to
+`skills/feature-workflow`. Both tools support symlinked skill directories:
+[Codex documentation](https://learn.chatgpt.com/docs/build-skills#where-to-save-skills)
+and [Claude Code documentation](https://code.claude.com/docs/en/skills#choose-where-skills-load).
+
+During [project setup](../setup.md), copy each complete directory from
+[skills/](../skills/) to the selected tool's project discovery path, using the
+same configuration source and revision as the entry point. When configuring
+both tools, copy into `.agents/skills/<skill-name>` and link
+`.claude/skills/<skill-name>` to `../../.agents/skills/<skill-name>`.
+Keep the installed files and relative links in the project's version control.
+
+Preserve this repository's existing links to its canonical skill directories.
+Reuse correct links or identical copies, refresh older installed copies, and
+report conflicting unrelated skills without overwriting them.
+
+Install the files locally even when `AGENTS.md` points at hosted instructions;
+reading that pointer does not register a native skill. Fetch canonical files
+from `skills/`, since raw Git symlink entries contain only link targets.
+
+For user-level installation when requested, copy or link the canonical skill
+directory to `~/.agents/skills/<skill-name>` for Codex and
+`~/.claude/skills/<skill-name>` for Claude Code. This makes it available
+across projects on that machine. Avoid installing a second copy when that
+scope already provides the skill you want to use.
+
+Start a fresh session after creating a discovery directory for the first time
+and check `/skills` for the installed skills.
+
 ## Setting up Claude Code
 
 - Copy `user-CLAUDE.md` to `~/.claude/CLAUDE.md` to load shared
