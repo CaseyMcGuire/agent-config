@@ -3,16 +3,35 @@
 - Prefer straightforward, readable code.
 - Avoid clever abstractions and unnecessary indirection.
 - Do not use single-line `if` statements.
-- Give code room to breathe: use blank lines between logical steps.
 - Expand dense argument lists, arrays, and chained calls when helpful.
-- Split large functions and components around clear responsibilities.
 - Do not refactor unrelated code.
 - Run focused validation appropriate to the change.
 - Follow the patterns already in the codebase before introducing new
   ones. When deviating, say why.
 - Do not add dependencies without asking.
-- Comment on why, not what. Document the public API of library code.
+- Document the public API of library code.
 - Keep supporting implementation and tests together.
+
+## Method structure and readability
+
+- Make methods that coordinate multiple steps read as a clear sequence
+  of operations at a consistent level of abstraction.
+- Use descriptive names that make each method's purpose clear at the
+  call site, without requiring the reader to inspect its implementation.
+- Keep high-level flow separate from implementation details. Extract
+  cohesive steps into helpers when doing so makes the coordinating method
+  easier to follow.
+- Prefer guard clauses and early returns when they reduce nesting and
+  make the main path easier to follow.
+- Group related statements together and separate distinct steps with
+  blank lines.
+- Split methods and components by responsibility, not arbitrary line counts.
+  Avoid extracting trivial statements that are clearer inline.
+- Comment on non-obvious intent and important constraints. Explain intent
+  rather than narrating individual statements.
+
+When an example would help clarify these guidelines, read the
+[order-service example](./examples/method-structure.md).
 
 ## Communication
 
