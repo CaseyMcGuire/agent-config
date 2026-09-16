@@ -2,7 +2,7 @@
 name: feature-workflow
 description: >-
   Plan and implement features with user-reviewed checklists and a review pause
-  after each chunk. Use for feature development or when the user explicitly
+  after each stage. Use for feature development or when the user explicitly
   requests the collaboration workflow.
 ---
 
@@ -16,46 +16,53 @@ workflow's planning and review pauses.
 
 ## Plan the work
 
-- Propose reviewable chunks, each centered on a coherent part of the task,
-  behavior, or important design decision. API, backend, and frontend work can
-  each be split into multiple chunks around distinct responsibilities. Let
-  scope and reviewability determine chunk size. Do not split work merely to
-  meet a line-count target.
-- Give a brief summary of what each chunk will entail, then present its steps
-  as a Markdown checklist (`- [ ]`). Include the supporting implementation,
-  appropriate tests, and required code generation in the same chunk.
-- Pause so the user can review and, if needed, revise the checklists. Wait for
-  agreement on a chunk's checklist before coding that chunk. Reuse agreement
+- Propose reviewable stages, each centered on a coherent responsibility,
+  behavior, or important design decision. For work spanning an API, backend,
+  and frontend, use separate review stages for the API contract, backend
+  implementation, frontend components, and frontend integration. Each area
+  can span multiple stages around distinct responsibilities. Let scope and
+  reviewability determine stage size. Do not split work merely to meet a
+  line-count target.
+- Present the full plan as one Markdown checklist (`- [ ]`), with one
+  top-level checkbox per stage. Give each item a short name and a brief
+  summary of what it will entail. Explain supporting tasks beneath the item
+  in prose or ordinary bullets when needed. Include appropriate tests and
+  required code generation in the stage they support.
+- Pause so the user can review and, if needed, revise the stage checklist.
+  Wait for agreement on a stage's scope before coding it. Reuse agreement
   already given in the conversation; revisit it when the plan materially changes.
-- A task can be one chunk when its scope is coherent and reviewable.
+- A task can be one stage when it covers one coherent, reviewable responsibility.
 
-Choose chunks and implementation order based on the feature's scope and
-dependencies. For example, a feature spanning an API, backend, and frontend
-might follow this sequence:
+Choose stage boundaries and order based on the feature's scope and
+dependencies. This is an example, not a fixed template; omit irrelevant
+stages and split areas further when they contain distinct responsibilities:
 
-1. **API contract:** GraphQL schema or equivalent inputs, outputs, and failures.
-2. **Backend service:** Business logic, validation, permissions, and transactions.
-3. **Resolver/controller:** Connect the API to the service.
-4. **Frontend UI:** Components, layout, and loading existing data.
-5. **Frontend interactions:** Actions, mutation handling, errors, and navigation.
+- [ ] **GraphQL API:** Define the schema, inputs, outputs, and expected failures.
+- [ ] **Backend:** Implement business logic, validation, permissions,
+  transactions, and resolver/controller integration.
+- [ ] **Frontend components:** Build components and layout, including loading
+  existing data.
+- [ ] **Frontend mutation hookup:** Connect actions to mutations and handle
+  results, errors, and navigation.
 
-## Implement and review each chunk
+## Implement and review each stage
 
-- Implement one agreed chunk at a time. Complete routine decisions within that
-  chunk autonomously.
-- Validate the chunk, summarize the decisions, and stop for review. Apply this
-  process to every chunk.
+- Implement one agreed stage at a time. Complete routine decisions within that
+  stage autonomously.
+- Validate the stage, summarize the decisions, and stop for review. Each
+  top-level checklist item is a separate review point. Apply this process to
+  every stage.
 - Incorporate feedback before proceeding. Wait until the user asks to continue
-  before starting the next chunk.
+  before starting the next stage.
 
-After each chunk, report:
+After each stage, report:
 
-1. The full agreed implementation checklist again. Mark a step `- [x]` only
-   when its code is implemented and committed. Leave all other steps unchecked
-   (`- [ ]`), including code that is implemented but not yet committed. Use
-   plain text for routine confirmations and validation summaries; do not invent
-   extra checklists.
-2. A brief summary of what will be implemented in the next chunk. If all chunks
+1. The full agreed stage checklist again. Mark a stage `- [x]` only when all
+   its planned work is implemented and committed. Leave other stages unchecked
+   (`- [ ]`), including stages with code implemented but not yet committed.
+   Use plain text for routine confirmations and validation summaries; do not
+   invent extra checklists.
+2. A brief summary of what will be implemented in the next stage. If all stages
    are complete, say so.
 3. What changed, by file. Identify generated files separately.
 4. Decisions made and why, including any assumption the request did not cover.

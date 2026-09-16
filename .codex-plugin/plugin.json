@@ -1,6 +1,6 @@
 {
   "name": "agent-config",
-  "version": "0.1.0+codex.20260915232255",
+  "version": "0.1.0+codex.20260915235044",
   "description": "Shared coding workflows for Claude Code and Codex.",
   "author": {
     "name": "CaseyMcGuire"
@@ -10,7 +10,7 @@
   "interface": {
     "displayName": "agent-config",
     "shortDescription": "Shared coding workflows",
-    "longDescription": "Plan and implement features with reviewed checklists, coherent review units, and a review pause after each chunk.",
+    "longDescription": "Plan and implement features in reviewable stages, with a checklist and a review pause after each stage.",
     "developerName": "CaseyMcGuire",
     "category": "Productivity",
     "capabilities": [

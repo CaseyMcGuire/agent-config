@@ -15,4 +15,4 @@
 
 - Commit and push only when requested.
 - Follow the project's branch conventions.
-- When stacked PRs are requested, create them incrementally, with each PR targeting the preceding branch and containing one reviewable chunk.
+- When stacked PRs are requested, create them incrementally, with each PR targeting the preceding branch and containing one reviewable stage.
