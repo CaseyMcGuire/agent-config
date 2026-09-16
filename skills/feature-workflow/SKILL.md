@@ -2,8 +2,8 @@
 name: feature-workflow
 description: >-
   Plan and implement features with user-reviewed checklists and a review pause
-  after each stage. Use for feature development or when the user explicitly
-  requests the collaboration workflow.
+  before committing each stage. Use for feature development or when the user
+  explicitly requests the collaboration workflow.
 ---
 
 # Feature workflow
@@ -49,19 +49,24 @@ stages and split areas further when they contain distinct responsibilities:
 
 - Implement one agreed stage at a time. Complete routine decisions within that
   stage autonomously.
-- Validate the stage, summarize the decisions, and stop for review. Each
-  top-level checklist item is a separate review point. Apply this process to
-  every stage.
-- Incorporate feedback before proceeding. Wait until the user asks to continue
-  before starting the next stage.
+- Validate the stage, summarize the decisions, and leave the changes
+  uncommitted for user review. Stop before making any commit. Each top-level
+  checklist item is a separate review point. Apply this process to every stage.
+- Incorporate review feedback and revalidate. Commit only after the user has
+  reviewed the finished changes and authorized committing them. Agreement on
+  the plan or permission to implement is not approval of the finished code or
+  authorization to commit it.
+- Wait until the user asks to continue before starting the next stage.
 
-After each stage, report:
+When a stage is ready for review, report before committing:
 
 1. The full agreed stage checklist again. Mark a stage `- [x]` only when all
-   its planned work is implemented and committed. Leave other stages unchecked
-   (`- [ ]`), including stages with code implemented but not yet committed.
-   Use plain text for routine confirmations and validation summaries; do not
-   invent extra checklists.
+   its planned work is implemented, reviewed by the user, and committed.
+   Leave other stages unchecked (`- [ ]`), including stages with code
+   implemented but not yet committed. For those stages, state whether they
+   are awaiting review or awaiting a commit. The checkbox definition does not
+   authorize committing. Use plain text for routine confirmations and
+   validation summaries; do not invent extra checklists.
 2. A brief summary of what will be implemented in the next stage. If all stages
    are complete, say so.
 3. What changed, by file. Identify generated files separately.
