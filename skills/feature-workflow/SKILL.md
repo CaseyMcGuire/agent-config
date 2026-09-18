@@ -11,8 +11,8 @@ description: >-
 Apply this workflow throughout the selected task, including subsequent turns.
 Use it for the whole session only when the user requests that scope. Follow
 the project's instructions for task scope, coding conventions, validation, and
-Git operations. An explicit request to implement directly overrides this
-workflow's planning and review pauses.
+Git operations. Skip design discussion only when the user explicitly asks to
+skip it. Ordinary requests to implement or continue do not waive design review.
 
 ## Plan the work
 
@@ -44,6 +44,30 @@ stages and split areas further when they contain distinct responsibilities:
   existing data.
 - [ ] **Frontend mutation hookup:** Connect actions to mutations and handle
   results, errors, and navigation.
+
+## Discuss the design before each stage
+
+- Before writing code for a stage, inspect the relevant code and present
+  the consequential design decisions that stage requires.
+- For each decision, explain the proposed approach, the credible
+  alternatives, the main trade-off, and your recommendation.
+- Include choices that affect dependencies, external integrations,
+  public interfaces, persistence, execution boundaries, resource
+  ownership, or operational behavior. For example: Docker CLI versus
+  an HTTP client, or one JVM per case versus one JVM per suite.
+- Keep this proportional to the work. Routine implementation details
+  do not need approval. If there are no new consequential decisions,
+  say so briefly.
+- Wait for agreement on unresolved consequential decisions before
+  implementing the affected work. Read-only investigation can proceed
+  before that agreement.
+- Approval of a stage's scope does not approve design choices that
+  have not been presented. A request to "continue" does not waive
+  this discussion.
+- Reuse decisions already agreed in the conversation; do not ask for
+  approval again unless new evidence materially changes the trade-off.
+- If implementation reveals a new consequential decision, present it
+  before committing to that approach.
 
 ## Implement and review each stage
 
