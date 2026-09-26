@@ -11,6 +11,9 @@
 - Do not add dependencies without asking.
 - Document the public API of library code.
 - Keep supporting implementation and tests together.
+- Use existing generated types, constants, and route builders for API
+  contracts, field names, and navigation instead of duplicating those
+  contracts by hand.
 
 ## Method structure and readability
 
