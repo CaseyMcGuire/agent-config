@@ -68,8 +68,8 @@ Copy-paste entry files for specific tools are in [adapters/](./adapters/README.m
 | [conventions/general.md](./conventions/general.md) | General coding conventions and validation. |
 | [conventions/language/java.md](./conventions/language/java.md) | Java conventions. |
 | [conventions/language/graphql.md](./conventions/language/graphql.md) | GraphQL conventions and a mutation response example. |
-| [conventions/language/kotlin.md](./conventions/language/kotlin.md) | Kotlin placeholder; no established conventions yet. |
-| [conventions/language/typescript.md](./conventions/language/typescript.md) | TypeScript placeholder; no established conventions yet. |
+| [conventions/language/kotlin.md](./conventions/language/kotlin.md) | Kotlin mapping, dependency injection, and sealed hierarchy conventions. |
+| [conventions/language/typescript.md](./conventions/language/typescript.md) | TypeScript discriminated union conventions. |
 | [conventions/libraries/react/README.md](./conventions/libraries/react/README.md) | React conventions. |
 | [conventions/libraries/react/stylex.md](./conventions/libraries/react/stylex.md) | StyleX conventions. |
 | [conventions/libraries/react/relay.md](./conventions/libraries/react/relay.md) | Relay conventions. |

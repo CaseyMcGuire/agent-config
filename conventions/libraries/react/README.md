@@ -1,5 +1,8 @@
 # React conventions
 
+- Prefer named function declarations for components.
+- Default-export a file's main component, using
+  `export default function Component(props: Props)` when it accepts props.
 - Keep styles local to their component, except shared themes or tokens.
 - Put style declarations above the component.
 - Keep JSX and component configuration arrays readable.
@@ -18,7 +21,7 @@ type Props = {
   prop2: number;
 };
 
-function Component(props: Props) {
+export default function Component(props: Props) {
   const { prop1, prop2 } = props;
 
   return (
@@ -28,3 +31,10 @@ function Component(props: Props) {
   );
 }
 ```
+
+## Forms and input components
+
+- Keep editing state local when it is only needed by that input or form.
+- Expose meaningful callbacks such as `onSubmit(text)` or
+  `onSubmit(title, content)`. Let the caller coordinate saving or submitting
+  those values.
