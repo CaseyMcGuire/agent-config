@@ -54,13 +54,13 @@ After installation, start a fresh session and check native discovery:
 | Skill | Codex | Claude Code |
 | --- | --- | --- |
 | Feature workflow | `$agent-config:feature-workflow` | `/agent-config:feature-workflow` |
-| Learning Mode | `$agent-config:learning-mode` | `/agent-config:learning-mode` |
+| Advisory Mode | `$agent-config:advisory-mode` | `/agent-config:advisory-mode` |
 
-Learning Mode requires explicit activation in both tools. Its shared `SKILL.md`
+Advisory Mode requires explicit activation in both tools. Its shared `SKILL.md`
 sets `disable-model-invocation: true` for Claude Code, and its `agents/openai.yaml`
 sets `policy.allow_implicit_invocation: false` for Codex. The shared-config
-catalog also supports an explicit request to enter learning or advisory mode
-without installing the plugin. See the [canonical instructions](../skills/learning-mode/SKILL.md)
+catalog also supports an explicit request to enter advisory mode
+without installing the plugin. See the [canonical instructions](../skills/advisory-mode/SKILL.md)
 for its behavior and edit boundaries.
 
 Check that the plugin's skill files match the configured source. The

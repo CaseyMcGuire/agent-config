@@ -19,7 +19,7 @@ they are absent from the agent's native installed-skills list.
 | Skill | When to use | Canonical instructions |
 | --- | --- | --- |
 | `feature-workflow` | Feature development, or when the user requests the collaboration workflow. | [SKILL.md](./skills/feature-workflow/SKILL.md) |
-| `learning-mode` | Only when explicitly requested, or continuing an active learning-mode conversation. Explain and debug with code in chat; edit files only on request. | [SKILL.md](./skills/learning-mode/SKILL.md) |
+| `advisory-mode` | Only when explicitly requested, or continuing an active advisory-mode conversation. Explain and debug with code in chat; edit files only on request. | [SKILL.md](./skills/advisory-mode/SKILL.md) |
 
 - When a skill is relevant or requested by name, prefer its installed instructions and respect its invocation policy. Reuse instructions already available in context. If the skill is not installed, read and follow the canonical `SKILL.md` linked above.
 - Load only relevant skills and supporting references.

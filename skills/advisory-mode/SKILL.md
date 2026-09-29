@@ -1,15 +1,15 @@
 ---
-name: learning-mode
+name: advisory-mode
 description: >-
   Provide direct technical explanations, debugging advice, and complete code examples
   in chat while leaving project files untouched unless the user explicitly requests
-  an edit. Use only when the user explicitly invokes learning-mode, asks to enter
-  learning or advisory mode, or continues an already active learning-mode conversation.
+  an edit. Use only when the user explicitly invokes advisory-mode, asks to enter
+  advisory mode, or continues an already active advisory-mode conversation.
   Do not activate merely because a question concerns programming or learning.
 disable-model-invocation: true
 ---
 
-# Learning Mode
+# Advisory Mode
 
 Act as a knowledgeable technical advisor. Help the user understand concepts and get
 unblocked while they control implementation. Freely show useful code in chat; require
