@@ -50,8 +50,20 @@ marketplace-add command with this checkout's absolute path. A local
 marketplace follows the checkout; it does not fetch GitHub.
 
 After installation, start a fresh session and check native discovery:
-`$agent-config:feature-workflow` in Codex and `/agent-config:feature-workflow`
-in Claude Code. Check that the plugin's skill files match the configured source. The
+
+| Skill | Codex | Claude Code |
+| --- | --- | --- |
+| Feature workflow | `$agent-config:feature-workflow` | `/agent-config:feature-workflow` |
+| Learning Mode | `$agent-config:learning-mode` | `/agent-config:learning-mode` |
+
+Learning Mode requires explicit activation in both tools. Its shared `SKILL.md`
+sets `disable-model-invocation: true` for Claude Code, and its `agents/openai.yaml`
+sets `policy.allow_implicit_invocation: false` for Codex. The shared-config
+catalog also supports an explicit request to enter learning or advisory mode
+without installing the plugin. See the [canonical instructions](../skills/learning-mode/SKILL.md)
+for its behavior and edit boundaries.
+
+Check that the plugin's skill files match the configured source. The
 shared-config pointer still supplies coding conventions; installing the plugin
 does not change when a skill's workflow should be used.
 

@@ -1,6 +1,6 @@
 {
   "name": "agent-config",
-  "version": "0.1.0+codex.20260916002654",
+  "version": "0.2.0",
   "description": "Shared coding workflows for Claude Code and Codex.",
   "author": {
     "name": "CaseyMcGuire"
@@ -10,7 +10,7 @@
   "interface": {
     "displayName": "agent-config",
     "shortDescription": "Shared coding workflows",
-    "longDescription": "Plan and implement features in reviewable stages, with a checklist and user review before committing each stage.",
+    "longDescription": "Plan and implement features in reviewable stages, or enter Learning Mode for explanations and code in chat with project edits only on request.",
     "developerName": "CaseyMcGuire",
     "category": "Productivity",
     "capabilities": [
@@ -18,7 +18,8 @@
       "Write"
     ],
     "defaultPrompt": [
-      "Use $agent-config:feature-workflow to plan a feature."
+      "Use $agent-config:feature-workflow to plan a feature.",
+      "Use $agent-config:learning-mode to explain concepts and help me get unblocked."
     ]
   }
 }

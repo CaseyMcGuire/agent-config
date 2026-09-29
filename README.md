@@ -46,11 +46,19 @@ A plugin packages the existing skills with metadata that each tool uses for
 discovery and installation. Both manifests use the same canonical `skills/`
 directory.
 
-Installed skills are available in fresh sessions as
-`$agent-config:feature-workflow` in Codex and `/agent-config:feature-workflow`
-in Claude Code. Plugin updates bring
-in added, changed, and removed skills; update timing follows each tool's
-refresh behavior. The shared-config pointer still supplies coding preferences
+Installed skills are available in fresh sessions:
+
+| Skill | Codex | Claude Code |
+| --- | --- | --- |
+| Feature workflow | `$agent-config:feature-workflow` | `/agent-config:feature-workflow` |
+| Learning Mode | `$agent-config:learning-mode` | `/agent-config:learning-mode` |
+
+Learning Mode is opt-in: it explains concepts, helps with debugging, and can
+provide complete code examples in chat. Project files change only when you
+explicitly request an edit. The mode stays active until you ask to exit it.
+
+Plugin updates bring in added, changed, and removed skills; update timing
+follows each tool's refresh behavior. The shared-config pointer still supplies coding preferences
 and supports remote skill reading without installing the plugin.
 
 Copy-paste entry files for specific tools are in [adapters/](./adapters/README.md).
@@ -63,6 +71,7 @@ Copy-paste entry files for specific tools are in [adapters/](./adapters/README.m
 | [setup.md](./setup.md) | Agent instructions for configuring a target project. |
 | [workflow.md](./workflow.md) | Task scope, skill selection, and Git workflow. |
 | [skills/feature-workflow/SKILL.md](./skills/feature-workflow/SKILL.md) | Shared feature planning, implementation, and review procedure. |
+| [skills/learning-mode/SKILL.md](./skills/learning-mode/SKILL.md) | Opt-in explanations, debugging advice, and code in chat; project edits only on request. |
 | [.codex-plugin/plugin.json](./.codex-plugin/plugin.json) and [.claude-plugin/plugin.json](./.claude-plugin/plugin.json) | Native plugin metadata; both discover the canonical `skills/` directory. |
 | [.agents/plugins/marketplace.json](./.agents/plugins/marketplace.json) and [.claude-plugin/marketplace.json](./.claude-plugin/marketplace.json) | Per-tool catalogs for installing this repository as a plugin. |
 | [conventions/general.md](./conventions/general.md) | General coding conventions and validation. |
