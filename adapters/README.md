@@ -80,8 +80,10 @@ claude plugin marketplace update agent-config
 claude plugin update agent-config@agent-config
 ```
 
-Start a fresh session after updating. In Claude Code, `/reload-plugins` can
-also refresh skills in the current session. Enable automatic updates for this
+After updating, ask for a new session only when the current tool requires one
+to load the changes. If the changes are already active or can be applied with
+a supported reload, do not ask for a restart. In Claude Code, `/reload-plugins`
+can refresh skills in the current session. Enable automatic updates for this
 marketplace through `/plugin` → Marketplaces → agent-config → Enable
 auto-update if wanted. Claude's background update can run after startup, with
 a delay of up to ten minutes; updated skills then need a reload or another

@@ -30,7 +30,7 @@ they are absent from the agent's native installed-skills list.
 - At the start of each session, if the `agent-config` plugin is installed in the current tool, check for updates from its configured source and ref. Keep this check read-only.
 - If an update is available, ask the user whether they want to upgrade. Upgrade only after approval, using the current tool's supported update mechanism and preserving the installation scope. [Updating the plugin](./adapters/README.md#updating-the-plugin) documents commands for known tools.
 - If the current tool has no supported way to check for or apply updates, explain the limitation instead of guessing commands.
-- After a successful upgrade, tell the user to start a new session to load the latest changes.
+- After a successful upgrade, check how the current tool activates updates. Ask the user to restart only if a new session is required to load the changes. If the changes are already active or can be applied with a supported reload, do not ask for a restart.
 
 ## Task-specific instructions
 
