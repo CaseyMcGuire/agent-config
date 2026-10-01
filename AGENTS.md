@@ -25,6 +25,13 @@ they are absent from the agent's native installed-skills list.
 - Load only relevant skills and supporting references.
 - Read remote skill files directly from their URLs. Following them does not require a local copy, clone, symlink, or installation. The optional [native plugin](./adapters/README.md#plugin-setup) registers skills in each tool's skill picker.
 
+## Plugin update checks
+
+- At the start of each session, if the `agent-config` plugin is installed in the current tool, check for updates from its configured source and ref. Keep this check read-only.
+- If an update is available, ask the user whether they want to upgrade. Upgrade only after approval, using the current tool's supported update mechanism and preserving the installation scope. [Updating the plugin](./adapters/README.md#updating-the-plugin) documents commands for known tools.
+- If the current tool has no supported way to check for or apply updates, explain the limitation instead of guessing commands.
+- After a successful upgrade, check how the current tool activates updates. Ask the user to restart only if a new session is required to load the changes. If the changes are already active or can be applied with a supported reload, do not ask for a restart.
+
 ## Task-specific instructions
 
 - When the user asks to use this configuration for a project, including "use this repo," follow [setup.md](./setup.md) for persistent setup unless the user explicitly requests task-only or session-only use. Loading an existing configuration pointer does not trigger setup.
