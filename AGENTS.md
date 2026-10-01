@@ -27,8 +27,9 @@ they are absent from the agent's native installed-skills list.
 
 ## Plugin update checks
 
-- At the start of each Codex or Claude Code session, if the `agent-config` plugin is installed in that tool, check for updates from its configured source and ref. Keep this check read-only.
-- If an update is available, ask the user whether they want to upgrade. Upgrade only after approval, using the commands for the current tool in [Updating the plugin](./adapters/README.md#updating-the-plugin) and preserving the installation scope.
+- At the start of each session, if the `agent-config` plugin is installed in the current tool, check for updates from its configured source and ref. Keep this check read-only.
+- If an update is available, ask the user whether they want to upgrade. Upgrade only after approval, using the current tool's supported update mechanism and preserving the installation scope. [Updating the plugin](./adapters/README.md#updating-the-plugin) documents commands for known tools.
+- If the current tool has no supported way to check for or apply updates, explain the limitation instead of guessing commands.
 - After a successful upgrade, tell the user to start a new session to load the latest changes.
 
 ## Task-specific instructions
