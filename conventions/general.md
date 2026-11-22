@@ -2,7 +2,9 @@
 
 - Prefer straightforward, readable code.
 - Avoid clever abstractions and unnecessary indirection.
-- Do not use single-line `if` statements.
+- In languages with braced control flow, use braces for every branch of
+  an `if`/`else if`/`else` statement. Put the body on its own line,
+  even for a single `return` or `throw`.
 - Expand dense argument lists, arrays, and chained calls when helpful.
 - Do not refactor unrelated code.
 - Run focused validation appropriate to the change.
