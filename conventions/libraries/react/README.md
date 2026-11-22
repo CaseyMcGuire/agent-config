@@ -1,16 +1,20 @@
 # React conventions
 
+- Default to one component per `.tsx` file and name the file after the
+  component. Parts of a compound component that form one API, such as
+  `PostShell.Title` and `PostShell.Contents`, can share a file.
 - Prefer named function declarations for components.
 - Default-export a file's main component, using
   `export default function Component(props: Props)` when it accepts props.
-- Keep styles local to their component, except shared themes or tokens.
+- Keep a component's styles and small pure helpers in its file. Shared
+  themes and tokens can live separately.
 - Put style declarations above the component.
 - Keep JSX and component configuration arrays readable.
 
 ## Component props
 
-- Prefer a named props type, such as `Props`, over an inline object type
-  in the component's function signature.
+- In a single-component file, name the file-local props type `Props`
+  and use it in the function signature.
 - Prefer accepting a single `props` parameter over destructuring in the
   function signature.
 - Destructuring is fine in the component if it makes sense.

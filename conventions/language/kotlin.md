@@ -1,5 +1,27 @@
 # Kotlin conventions
 
+## File organization
+
+- By default, give each top-level class or interface its own file named
+  after the type, such as `UserPolicy.kt`.
+- Keep a private implementation type in its owner's file when moving it
+  would require wider visibility or obscure which type owns it.
+
+## Multiline calls and chains
+
+- In a multiline call with named arguments, put one argument on each
+  line. Keep `name = value` together when the value fits on one line.
+- When a fluent chain wraps, put each modifier on its own continuation
+  line.
+
+```kotlin
+val problemLanguage by belongsTo<ProblemLanguage>("problem_language")
+  .field(problemLanguageId)
+  .unique()
+  .inverse(ProblemLanguage::judgeConfiguration)
+  .onDelete(OnDelete.RESTRICT)
+```
+
 ## Mapping functions
 
 - Prefer small, explicit mapping functions such as `toGraphqlType()` and
