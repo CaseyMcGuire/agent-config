@@ -17,12 +17,25 @@
   contracts, field names, and navigation instead of duplicating those
   contracts by hand.
 
+## Naming
+
+- Choose names that make calls and conditions read like ordinary English.
+  Read the receiver, function name, and arguments together. A caller
+  should understand the operation without opening the implementation.
+- Name variables and parameters for their roles. When moving a page,
+  `sourceFolderId` and `destinationFolderId` explain how each ID is used.
+- Give actions verbs that describe what they do. Name predicates for the
+  question they answer. For example, `inv.check(d)` becomes
+  `invoice.isOverdue(today)`, and `notify(inv)` becomes
+  `sendPaymentReminder(invoice)`.
+- Use full words when an abbreviation would make the reader guess.
+  Familiar domain terms such as `id` and short names such as `i` for
+  an index in a small loop are clear in context.
+
 ## Method structure and readability
 
 - Make methods that coordinate multiple steps read as a clear sequence
   of operations at a consistent level of abstraction.
-- Use descriptive names that make each method's purpose clear at the
-  call site, without requiring the reader to inspect its implementation.
 - Keep high-level flow separate from implementation details. Extract
   cohesive steps into helpers when doing so makes the coordinating method
   easier to follow.
